@@ -20,7 +20,9 @@ export default {
   },
   methods: {
     onSubmitted () {
-      axios.post('http://localhost:8000/api/comment',
+      const token = localStorage.getItem('token')
+      console.log(token)
+      axios.post('http://localhost:8000/api/comment?token=' + token,
         {content: this.commentContent})
         .then(
           (response) => console.log(response),

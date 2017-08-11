@@ -37,8 +37,9 @@ export default {
       this.editing = false
     },
     onDelete () {
+      const token = localStorage.getItem('token')
       this.$emit('commentDeleted', this.cmt.id)
-      axios.delete('http://localhost:8000/api/comment/' + this.cmt.id)
+      axios.delete('http://localhost:8000/api/comment/' + this.cmt.id + '?token=' + token)
         .then(
           response => console.log(response),
           () => alert('Deleted ' + this.cmt.content)
@@ -49,9 +50,12 @@ export default {
         )
     },
     onUpdate () {
+      const token = localStorage.getItem('token')
+      console.log(token)
       this.editing = false
       this.cmt.content = this.editValue
-      axios.put('http://localhost:8000/api/comment/' + this.cmt.id)
+      axios.put('http://localhost:8000/api/comment/' + this.cmt.id + '?token=' + token,
+        {content: this.editValue})
         .then(
           response => console.log(response),
           () => alert('Update ' + this.cmt.content)

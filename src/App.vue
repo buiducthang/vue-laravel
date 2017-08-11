@@ -5,6 +5,8 @@
     <div class="col-xs-12">
         <router-link to="/">New Comment</router-link>
         <router-link to="/comments">Get Comments</router-link>
+        <router-link to="/signup">Sign Up</router-link>
+        <router-link to="/signin">Sign In</router-link>
     </div>
   </div>
   <hr>
